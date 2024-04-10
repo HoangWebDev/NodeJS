@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/logo.png" />
+    <title>Admin TechPhone</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./assets/js/functions.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <!-- SIDEBAR -->
+      <section id="side_bar">
+        <a href="" class="logo">
+          <img src="../assets/images/logo.png" alt="" />
+          Tech<span>Phone</span>
+        </a>
+        <!-- Menu -->
+        <div class="side_menu">
+          <ul class="side_menu--top">
+            <li class="active">
+              <a href="./index.html">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Quản Lý</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_danhmuc.html">
+                <ion-icon name="file-tray-full-outline"></ion-icon>
+                <span>Danh mục</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_loai.html">
+                <ion-icon name="layers-outline"></ion-icon>
+                <span>Loại</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_sanpham.html">
+                <ion-icon name="laptop-outline"></ion-icon>
+                <span>Sản phẩm</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_hoadon.html">
+                <ion-icon name="bag-check-outline"></ion-icon>
+                <span>Hóa đơn</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Tài khoản</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="side_menu--bottom">
+            <li>
+              <a href="">
+                <ion-icon name="settings-outline"></ion-icon>
+                <span>Cài đặt</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Đăng nhập</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span>Thoát</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="main">
+        <nav class="main_header">
+          <h2>Quản Lý</h2>
+          <div class="main_header--search">
+            <input type="search" id="search" placeholder="Tìm kiếm ..." />
+            <button id="search_btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+          </div>
+          <div class="main_header--account">
+            Chào,<span>Admin</span>
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </div>
+        </nav>
+        <main>
+          <div id="main_params">
+            <div class="main_params--list">
+              <div class="params_icon">
+                <ion-icon name="search-outline"></ion-icon>
+              </div>
+              <p>Tìm kiếm</p>
+              <h4>+89</h4>
+            </div>
+            <div class="main_params--list">
+              <div class="params_icon">
+                <ion-icon name="cart-outline"></ion-icon>
+              </div>
+              <p>Sản phẩm</p>
+              <h4>+95</h4>
+            </div>
+            <div class="main_params--list">
+              <div class="params_icon">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+              </div>
+              <p>Tin nhắn</p>
+              <h4>+79</h4>
+            </div>
+            <div class="main_params--list">
+              <div class="params_icon">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </div>
+              <p>Tài khoản</p>
+              <h4>+50</h4>
+            </div>
+          </div>
+          <div id="main_chart">
+            <h2>Biểu Đồ</h2>
+            <div class="main_chart--line">
+              <canvas id="canvas"></canvas>
+            </div>
+          </div>
+          <div id="main_customer">
+            <h2>Khách Hàng Nổi Bật</h2>
+            <table class="main_customer--table"></table>
+          </div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="./assets/js/script.js"></script>
+<script>
+  const labels = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Tìm kiếm",
+        backgroundColor: "#ae69dd",
+        borderColor: "#ae69dd",
+        data: [0, 27, 56, 34, 24, 89, 38, 56, 68, 44, 76, 90],
+        tension: 0.4,
+      },
+      {
+        label: "Sản phẩm",
+        backgroundColor: "#6363d8",
+        borderColor: "#6363d8",
+        data: [0, 34, 32, 23, 2, 95, 10, 27, 56, 34, 24, 89],
+        tension: 0.4,
+      },
+      {
+        label: "Tin nhắn",
+        backgroundColor: "#391091",
+        borderColor: "#391091",
+        data: [0, 2, 10, 26, 38, 47, 51, 85, 16, 43, 62, 50],
+        tension: 0.4,
+      },
+      {
+        label: "Tài khoản",
+        backgroundColor: "#f26c29",
+        borderColor: "#f26c29",
+        data: [0, 10, 5, 43, 62, 50, 73, 84, 25, 43, 65, 89],
+        tension: 0.4,
+      },
+    ],
+  };
+  const config = {
+    data: data,
+    type: "line",
+  };
+  const canvas = document.getElementById("canvas");
+  const chart = new Chart(canvas, config); // eslint-disable-line no-unused-vars
+</script>

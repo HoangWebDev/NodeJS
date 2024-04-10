@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/logo.png" />
+    <title>Admin TechPhone</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <!-- SIDEBAR -->
+      <section id="side_bar">
+        <a href="" class="logo">
+          <img src="../assets/images/logo.png" alt="" />
+          Tech<span>Phone</span>
+        </a>
+        <!-- Menu -->
+        <div class="side_menu">
+          <ul class="side_menu--top">
+            <li>
+              <a href="./index.html">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Quản Lý</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_danhmuc.html">
+                <ion-icon name="file-tray-full-outline"></ion-icon>
+                <span>Danh mục</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_loai.html">
+                <ion-icon name="layers-outline"></ion-icon>
+                <span>Loại</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_sanpham.html">
+                <ion-icon name="laptop-outline"></ion-icon>
+                <span>Sản phẩm</span>
+              </a>
+            </li>
+            <li class="active">
+              <a href="./ds_hoadon.html">
+                <ion-icon name="bag-check-outline"></ion-icon>
+                <span>Hóa đơn</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Tài khoản</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="side_menu--bottom">
+            <li>
+              <a href="">
+                <ion-icon name="settings-outline"></ion-icon>
+                <span>Cài đặt</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Đăng nhập</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span>Thoát</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="main">
+        <main>
+          <h2>Hóa đơn chi tiết</h2>
+          <div id="ds_hoa_don_ct" class="list"></div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import { laydsdhct, xoa_dhct } from "./assets/js/module_hoadon.js";
+  const param = new URLSearchParams(window.location.search);
+  let id = param.get("id_dh");
+  let ds_hoadon_ct = await laydsdhct(id);
+  console.log(ds_hoadon_ct);
+  let str = ``;
+  ds_hoadon_ct.forEach((hoa_don_ct) => {
+    str += `<tr>
+            <td>${hoa_don_ct.id}</td>
+            <td>${hoa_don_ct.id_dh}</td>
+            <td>${hoa_don_ct.ten_sp}</td>
+            <td class='img-item'><img src='../assets${hoa_don_ct.hinh}'></td>
+            <td>
+              <span class="price">${Number(hoa_don_ct.gia).toLocaleString(
+                "Vi"
+              )} VNĐ</span></td>                    
+            <td>${hoa_don_ct.so_luong}</td>
+            <td>
+              <span class="price">${Number(
+                hoa_don_ct.thanh_tien
+              ).toLocaleString("Vi")} VNĐ</span></td>            
+            <td>
+              <button id="${hoa_don_ct.id}" class="btn btn-delete">Xóa</button>
+            </td>
+          </tr>`;
+  });
+  document.querySelector("#ds_hoa_don_ct").innerHTML = `
+      <table id="example" class="table">
+        <thead>
+          <tr>
+            <th>Mã DHCT</th>
+            <th>Mã hóa đơn</th>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Giá sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          ${str}
+        </tbody>
+        <tr class="listPage"></tr>
+      </table>`;
+  document.querySelectorAll(".btn-delete").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (!confirm("Bạn có chắc muốn xóa hóa đơn này!")) {
+        return;
+      }
+      delete_dhct();
+    });
+  });
+  async function delete_dhct() {
+    let obj = event.target;
+    let id = obj.getAttribute("id");
+    let kq = xoa_dhct(id);
+    location.href = "ds_hoadon.html";
+    confirm("Đã xóa đơn hàng!");
+  }
+</script>

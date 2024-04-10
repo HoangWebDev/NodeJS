@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/image/logo.png" />
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="wrap-container">
+      <div id="form-login">
+        <a href="./index.html"
+          ><ion-icon class="close_login" name="close-outline"></ion-icon
+        ></a>
+        <h1>Đăng Nhập</h1>
+        <form name="frmlogin">
+          <div class="form-group">
+            <label for="text" class="title">Tên tài khoản:</label> <br />
+            <div class="box-group">
+              <input
+                type="text"
+                name="tai_khoan"
+                class="input username"
+                placeholder=" "
+                autofocus
+                autocomplete="off"
+              />
+              <label class="label">Username</label>
+            </div>
+          </div>
+          <div class="err" id="errUser"></div>
+          <div class="form-group">
+            <label for="pass" class="title">Mật khẩu:</label> <br />
+            <div class="box-group">
+              <input
+                type="password"
+                name="mat_khau"
+                class="input password"
+                placeholder=" "
+                autocomplete="off"
+              />
+              <label class="label">Password</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="checkbox" class="title">Ghi nhớ mật khẩu:</label> <br />
+            <div class="box-group">
+              <input type="checkbox" name="checkbox" class="input checkbox" />
+            </div>
+          </div>
+          <div class="err" id="errPass"></div>
+          <div class="register">
+            <p>Không có tài khoản! <a href="./form.html">Đăng Ký</a></p>
+          </div>
+          <button name="btn" type="button" class="button">Đăng Nhập</button>
+          <div class="or">
+            <span>Or</span>
+          </div>
+          <div class="socical">
+            <a href="" class="social">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="" class="social">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="" class="social">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <!-- <script src="./assets/js/login.js"></script> -->
+</html>
+<script>
+  frmlogin.btn.onclick = function () {
+    let user = frmlogin.tai_khoan.value;
+    let pass = frmlogin.mat_khau.value;
+    let obj = {
+      tai_khoan: user,
+      mat_khau: pass,
+    };
+    let opt = {
+      method: "POST",
+      body: JSON.stringify(obj),
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch("http://localhost:3000/users/login", opt)
+      .then((res) => {
+        let token = res.headers.get("Authorization");
+        sessionStorage.setItem("token", token);
+        return res.json();
+      })
+      .then((data) => {
+        window.location.href = "./admin/index.html";
+      });
+  };
+</script>

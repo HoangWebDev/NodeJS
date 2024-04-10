@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/image/logo.png" />
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="./assets/css/form.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="wrap-container">
+      <div id="form-register">
+        <a href="./index.html"
+          ><ion-icon class="close_register" name="close-outline"></ion-icon
+        ></a>
+        <h1>Đăng Ký</h1>
+        <form>
+          <div class="form-group">
+            <label for="text" class="title">Họ:</label>
+            <div class="box-group">
+              <input
+                type="text"
+                name="ho"
+                class="input username"
+                placeholder=" "
+                autofocus
+                autocomplete="off"
+              />
+              <label class="label" for="text">First Name</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="text" class="title">Tên:</label>
+            <div class="box-group">
+              <input
+                type="text"
+                name="ten"
+                class="input username"
+                placeholder=" "
+                autofocus
+                autocomplete="off"
+              />
+              <label class="label" for="text">Last Name</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="text" class="title">Tên tài khoản:</label>
+            <div class="box-group">
+              <input
+                type="text"
+                name="username"
+                class="input username"
+                placeholder=" "
+                autofocus
+                autocomplete="off"
+              />
+              <label class="label" for="text">Username</label>
+            </div>
+          </div>
+          <div class="err" id="errUser"></div>
+          <div class="form-group">
+            <label for="pass" class="title">Mật khẩu:</label>
+            <div class="box-group">
+              <input
+                type="password"
+                name="password"
+                class="input password"
+                placeholder=" "
+                autocomplete="off"
+              />
+              <label class="label" for="pass">Password</label>
+            </div>
+          </div>
+          <div class="err" id="errPass"></div>
+          <div class="form-group">
+            <label for="number" class="title">Nhập lại mật khẩu:</label>
+            <div class="box-group">
+              <input
+                type="password"
+                name="confirmpass"
+                class="input confirmpass"
+                placeholder=" "
+                autocomplete="off"
+              />
+              <label class="label" for="number-phone">Email password</label>
+            </div>
+          </div>
+          <div class="err" id="errConfirmPass"></div>
+          <div class="form-group">
+            <label for="enterpass" class="title">Nhập email:</label>
+            <div class="box-group">
+              <input
+                type="text"
+                name="email"
+                class="input email"
+                placeholder=" "
+                autocomplete="off"
+              />
+              <label class="label" for="enter-pass">Email</label>
+            </div>
+          </div>
+          <div class="err" id="errEmail"></div>
+          <div class="login">
+            <p>Đã có tài khoản! <a href="./login.html">Đăng Nhập</a></p>
+          </div>
+          <button type="button" value="Đăng Ký" class="button">Đăng Ký</button>
+          <div class="or">
+            <span>Or</span>
+          </div>
+          <div class="socical">
+            <a href="" class="social">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="" class="social">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="" class="social">
+              <ion-icon name="logo-google"></ion-icon>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="./assets/js/form.js"></script>
+</html>

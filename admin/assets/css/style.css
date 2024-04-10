@@ -1,0 +1,337 @@
+:root {
+  --cl-white: #fff;
+  --cl-dark: #000;
+  --container-bg: #ededed;
+  --box-sd-bg: 0 0 10px 0px rgb(138 138 138);
+  --box-sd-bg-hover: rgba(100, 100, 111, 0.653) 0px 0px 20px 0px;
+  --danger-cl: rgb(249, 0, 0);
+  --button: #5c47bd;
+  --button-hover: #ef1e1e;
+  --text-cl: #686868;
+  --text-cl-hover: #9a4cce;
+  --liner-gradiant: #6c54d845, #af69dd68;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+#container {
+  position: relative;
+  /* max-width: 1400px; */
+  margin: 0 auto;
+}
+
+/* Side Bar */
+#side_bar {
+  position: fixed;
+  top: 0;
+  /* left: 80px; */
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#side_bar .logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: box-shadow 0.3s linear;
+}
+
+#side_bar .logo img {
+  width: 70px;
+}
+
+#side_bar .logo span {
+  font-size: 17px;
+  color: var(--danger-cl);
+}
+
+#side_bar .side_menu {
+  position: relative;
+  height: 80vh;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  box-shadow: var(--box-sd-bg);
+  transition: box-shadow 0.3s linear;
+}
+
+#side_bar .side_menu:hover {
+  box-shadow: var(--box-sd-bg-hover);
+}
+
+#side_bar ul li {
+  margin: 10px 5px;
+  position: relative;
+  transition: all 0.3s linear;
+}
+
+#side_bar .side_menu--bottom {
+  position: absolute;
+  width: 240px;
+  bottom: 10px;
+}
+
+#side_bar ul li a {
+  height: 40px;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  color: var(--text-cl);
+}
+
+#side_bar ul li a:hover {
+  color: var(--text-cl-hover);
+  border-radius: 5px;
+  background-color: #dcdcdc;
+}
+
+#side_bar ul li.active a {
+  color: var(--text-cl-hover);
+}
+
+#side_bar ul li.active {
+  position: relative;
+  border-radius: 5px;
+  background-color: #dcdcdc;
+}
+
+#side_bar ul li.active::before,
+#side_bar ul li:not(.active)::before {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: var(--text-cl-hover);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s linear;
+  z-index: 10;
+}
+
+#side_bar ul li.active::after,
+#side_bar ul li:not(.active)::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: var(--text-cl-hover);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s linear;
+  z-index: 10;
+}
+
+#side_bar ul li.active::before,
+#side_bar ul li.active::after {
+  width: 10px;
+  height: 25px;
+}
+
+#side_bar ul li:not(.active):hover::before,
+#side_bar ul li:not(.active):hover::after {
+  width: 10px;
+  height: 25px;
+}
+/* Main */
+#main {
+  position: absolute;
+  right: 0px;
+  width: calc(100% - 340px);
+  margin: 10px;
+  border-radius: 10px;
+  margin-bottom: 100px;
+}
+
+#main .main_header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#main .main_header h2 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+#main .main_header .main_header--search {
+  position: relative;
+}
+
+#main .main_header .main_header--search #search {
+  border: none;
+  outline: none;
+  background-color: var(--cl-white);
+  box-shadow: var(--box-sd-bg);
+  padding: 10px;
+  width: 500px;
+  border-radius: 10px;
+  transition: box-shadow 0.3s linear;
+}
+
+#main .main_header .main_header--search #search:hover,
+#main .main_header .main_header--search #search:focus {
+  box-shadow: var(--box-sd-bg-hover);
+}
+
+#main .main_header .main_header--search #search_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  outline: none;
+  background-color: var(--cl-white);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#main .main_header .main_header--search #search_btn ion-icon {
+  font-size: 12px;
+}
+
+#main .main_header .main_header--account {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+#main .main_header .main_header--account ion-icon {
+  font-size: 30px;
+  color: var(--text-cl);
+}
+
+#main .main_header .main_header--account span {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+#main main {
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+main #main_params {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main #main_params .main_params--list {
+  position: relative;
+  text-align: right;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-sd-bg);
+  transition: all 0.3s linear;
+}
+
+main #main_params .main_params--list:hover {
+  box-shadow: var(--box-sd-bg-hover);
+  scale: 1.02;
+}
+
+main #main_params .main_params--list .params_icon ion-icon {
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 30px;
+  color: var(--cl-white);
+}
+
+main #main_params .main_params--list:first-child .params_icon ion-icon {
+  background-color: var(--text-cl-hover);
+}
+main #main_params .main_params--list:nth-child(2) .params_icon ion-icon {
+  background-color: #6363d8;
+}
+main #main_params .main_params--list:nth-child(3) .params_icon ion-icon {
+  background-color: #391091;
+}
+main #main_params .main_params--list:last-child .params_icon ion-icon {
+  background-color: #f26c29;
+}
+
+main #main_params .main_params--list p {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-cl);
+}
+
+main #main_params .main_params--list h4 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+main #main_chart {
+  margin-top: 20px;
+}
+
+main #main_chart h2 {
+  padding: 10px;
+}
+
+main #main_chart .main_chart--line {
+  width: 70%;
+  margin: 0px auto;
+}
+
+#canvas {
+  width: 100%;
+}
+
+main #main_customer {
+  margin-top: 20px;
+}
+
+main #main_customer h2 {
+  padding: 10px;
+}
+
+main #main_customer .main_customer--table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+main #main_customer .main_customer--table thead {
+  border-radius: 10px;
+}
+
+main #main_customer .main_customer--table tr th,
+td {
+  text-align: center;
+  padding: 15px;
+}

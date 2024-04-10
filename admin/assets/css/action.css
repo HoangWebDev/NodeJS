@@ -1,0 +1,243 @@
+:root {
+  --cl-white: #fff;
+  --cl-dark: #000;
+  --container-bg: #ededed;
+  --box-sd-bg: 0 0 10px 0px rgb(138 138 138);
+  --box-sd-bg-hover: rgba(100, 100, 111, 0.653) 0px 0px 20px 0px;
+  --danger-cl: rgb(249, 0, 0);
+  --warning-cl: rgb(255, 187, 0);
+  --button: #5c47bd;
+  --button-hover: #ef1e1e;
+  --text-cl: #686868;
+  --text-cl-hover: #9a4cce;
+  --liner-gradiant: #6c54d845, #af69dd68;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--cl-dark);
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+#container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Side Bar */
+#side_bar {
+  position: fixed;
+  top: 0;
+  left: 80px;
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#side_bar .logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: box-shadow 0.3s linear;
+}
+
+#side_bar .logo img {
+  width: 70px;
+}
+
+#side_bar .logo span {
+  font-size: 17px;
+  color: var(--danger-cl);
+}
+
+#side_bar .side_menu {
+  position: relative;
+  height: 80vh;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  box-shadow: var(--box-sd-bg);
+  transition: box-shadow 0.3s linear;
+}
+
+#side_bar .side_menu:hover {
+  box-shadow: var(--box-sd-bg-hover);
+}
+
+#side_bar ul li {
+  margin: 10px 5px;
+  position: relative;
+  transition: all 0.3s linear;
+}
+
+#side_bar .side_menu--bottom {
+  position: absolute;
+  width: 240px;
+  bottom: 10px;
+}
+
+#side_bar ul li a {
+  height: 40px;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  color: var(--text-cl);
+}
+
+#side_bar ul li a:hover {
+  color: var(--text-cl-hover);
+  border-radius: 5px;
+  background-color: #dcdcdc;
+}
+
+#side_bar ul li.active a {
+  color: var(--text-cl-hover);
+}
+
+#side_bar ul li.active {
+  position: relative;
+  border-radius: 5px;
+  background-color: #dcdcdc;
+}
+
+#side_bar ul li.active::before,
+#side_bar ul li:not(.active)::before {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: var(--text-cl-hover);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s linear;
+  z-index: 10;
+}
+
+#side_bar ul li.active::after,
+#side_bar ul li:not(.active)::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: var(--text-cl-hover);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s linear;
+  z-index: 10;
+}
+
+#side_bar ul li.active::before,
+#side_bar ul li.active::after {
+  width: 10px;
+  height: 25px;
+}
+
+#side_bar ul li:not(.active):hover::before,
+#side_bar ul li:not(.active):hover::after {
+  width: 10px;
+  height: 25px;
+}
+
+/* Main */
+#main {
+  position: absolute;
+  right: 0px;
+  width: calc(100% - 340px);
+  margin: 20px 10px;
+  border-radius: 10px;
+  margin-bottom: 100px;
+}
+
+main .price {
+  color: var(--danger-cl);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+main h2 {
+  margin-bottom: 20px;
+}
+
+main .them {
+  margin-top: 40px;
+}
+main .them .add_product {
+  margin-top: 20px;
+}
+
+main .them .add_product form .group_input {
+  margin: 10px;
+}
+
+main .them .add_product form .group_input label {
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-danger);
+}
+
+main .them .add_product form .group_input input,
+main .them .add_product form .group_input select {
+  background-color: #eee;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+main .them .add_product form .group_input img {
+  width: 20%;
+}
+
+main .them .add_product form .group_input .error {
+  font-size: 15px;
+  color: var(--danger-cl);
+}
+
+main .them .add_product form .group_btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+main .them .add_product form .group_btn .btn {
+  border-radius: 20px;
+  border: 1px solid #fea116;
+  background-color: #fea116;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 10px;
+  padding: 12px 80px;
+  letter-spacing: 1px;
+  transition: 0.3s ease-in-out;
+}
+main .them .add_product form .group_btn .btntp {
+  background-color: rgba(225, 225, 225, 0.2);
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+main .them .add_product form .group_btn .btn:hover {
+  letter-spacing: 2px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/image/logo.png" />
+    <title>Danh mục - TechPhone</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/shop.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-----------------------Header--------------------------->
+    <header id="container_header">
+      <!-- Script hiện header -->
+    </header>
+    <!------------------------ Nav --------------------------->
+    <nav>
+      <div class="title">
+        <!-- Hiện tên danh mục -->
+      </div>
+      <div class="container">
+        <div class="filter">
+          <h3>Lọc theo</h3>
+          <div class="filter_product"></div>
+        </div>
+        <div class="main">
+          <!---------------------- Catalog ------------------------->
+          <div class="catalogs">
+            <div class="list_catalog">
+              <div class="list_catalog__item">
+                <h3>Hãng</h3>
+                <ul id="list_brand">
+                  <li>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                    <!-- Script hiện sản phẩm theo loai -->
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!---------------------- End - Catalog ------------------------->
+          <!---------------------- Product ------------------------->
+          <div class="products">
+            <div class="list_product">
+              <!-- Script hien thi san pham -->
+            </div>
+          </div>
+          <!---------------------- End - Product ------------------------->
+        </div>
+      </div>
+    </nav>
+    <!-----------------------Footer--------------------------->
+    <footer>
+      <!-- Script hiện footer -->
+    </footer>
+  </body>
+  <!-- <script src="./assets/js/product.js"></script> -->
+  <script>
+    const toggle_menu = document.querySelector(".toggle_menu");
+    const toggle_close = document.querySelector(".toggle_close");
+    const mobile_menu = document.querySelector(".mobile-menu");
+    const overflow = document.querySelector(".overflow");
+    toggle_menu.addEventListener("click", () => {
+      mobile_menu.style.transform = "translateX(0)";
+      mobile_menu.style.opacity = "1";
+      mobile_menu.style.visibility = "visible";
+      overflow.style.display = "block";
+    });
+    toggle_close.addEventListener("click", () => {
+      mobile_menu.style.transform = "translateX(100%)";
+      mobile_menu.style.opacity = "0";
+      mobile_menu.style.visibility = "hidden";
+      overflow.style.display = "none";
+    });
+    overflow.addEventListener("click", () => {
+      mobile_menu.style.transform = "translateX(100%)";
+      mobile_menu.style.opacity = "0";
+      mobile_menu.style.visibility = "hidden";
+      overflow.style.display = "none";
+    });
+  </script>
+</html>
+<script src="./assets/js/functions.js"></script>
+<script>
+  header();
+</script>
+<script>
+  footer();
+</script>
+<script>
+  hienmenu();
+</script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  let id = params.get("id");
+  hiensptheodanhmuc(id, 30);
+</script>
+<script>
+  hienselect();
+</script>

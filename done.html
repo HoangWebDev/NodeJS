@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/image/logo.png" />
+    <title>404 Error - Page Not Found</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 25px;
+        color: #333;
+      }
+
+      p {
+        font-size: 18px;
+        color: #666;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1>Cám ơn bạn đã thanh toán</h1>
+        <button onclick="goBack()">Go Back</button>
+      </div>
+    </div>
+
+    <script>
+      function goBack() {
+        location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>

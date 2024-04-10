@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/logo.png" />
+    <title>Admin TechPhone</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <!-- SIDEBAR -->
+      <section id="side_bar">
+        <a href="" class="logo">
+          <img src="../assets/images/logo.png" alt="" />
+          Tech<span>Phone</span>
+        </a>
+        <!-- Menu -->
+        <div class="side_menu">
+          <ul class="side_menu--top">
+            <li>
+              <a href="./index.html">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Quản Lý</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_danhmuc.html">
+                <ion-icon name="file-tray-full-outline"></ion-icon>
+                <span>Danh mục</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_loai.html">
+                <ion-icon name="layers-outline"></ion-icon>
+                <span>Loại</span>
+              </a>
+            </li>
+            <li class="active">
+              <a href="./ds_sanpham.html">
+                <ion-icon name="laptop-outline"></ion-icon>
+                <span>Sản phẩm</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_hoadon.html">
+                <ion-icon name="bag-check-outline"></ion-icon>
+                <span>Hóa đơn</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Tài khoản</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="side_menu--bottom">
+            <li>
+              <a href="">
+                <ion-icon name="settings-outline"></ion-icon>
+                <span>Cài đặt</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Đăng nhập</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span>Thoát</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="main">
+        <main>
+          <h2>Danh sách sản phẩm</h2>
+          <div id="ds_sanpham" class="list"></div>
+          <!-- <ul id="pagination"></ul> -->
+          <div id="pagination"></div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>
+<script src="./assets/js/functions.js"></script>
+<script>
+  dssan_pham();
+</script>

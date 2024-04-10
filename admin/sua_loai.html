@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/logo.png" />
+    <title>Admin TechPhone</title>
+    <link rel="stylesheet" href="./assets/css/action.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <!-- SIDEBAR -->
+      <section id="side_bar">
+        <a href="" class="logo">
+          <img src="../assets/images/logo.png" alt="" />
+          Tech<span>Phone</span>
+        </a>
+        <!-- Menu -->
+        <div class="side_menu">
+          <ul class="side_menu--top">
+            <li>
+              <a href="./index.html">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Quản Lý</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_danhmuc.html">
+                <ion-icon name="file-tray-full-outline"></ion-icon>
+                <span>Danh mục</span>
+              </a>
+            </li>
+            <li class="active">
+              <a href="./ds_loai.html">
+                <ion-icon name="layers-outline"></ion-icon>
+                <span>Loại</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_sanpham.html">
+                <ion-icon name="laptop-outline"></ion-icon>
+                <span>Sản phẩm</span>
+              </a>
+            </li>
+            <li>
+              <a href="./ds_hoadon.html">
+                <ion-icon name="bag-check-outline"></ion-icon>
+                <span>Hóa đơn</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Tài khoản</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="side_menu--bottom">
+            <li>
+              <a href="">
+                <ion-icon name="settings-outline"></ion-icon>
+                <span>Cài đặt</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="person-outline"></ion-icon>
+                <span>Đăng nhập</span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span>Thoát</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="main">
+        <main>
+          <h2>Sửa loại</h2>
+          <div id="sua_loai" class="them"></div>
+        </main>
+      </section>
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<!-- <script>
+  menu();
+</script> -->
+<script type="module">
+  import { lay1loai, sualoai } from "./assets/js/module_loai.js";
+  const params = new URLSearchParams(window.location.search);
+  let id = params.get("id");
+  //!Lấy token
+  const laytoken = () => {
+    let token = sessionStorage.getItem("token");
+    if (token != null) return token;
+    alert("Bạn phải đăng nhập!");
+    window.location.href = "../login.html";
+    return null;
+  };
+
+  let token = laytoken();
+
+  let opt = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  let loai = await lay1loai(id);
+  let ten_dm = ``;
+  let danh_muc = await fetch(`http://localhost:3000/admin/dm`, opt)
+    .then(async (r) => {
+      if (r.status == 401) {
+        let str = r.statusText + "\n" + JSON.stringify(await r.json());
+        alert("Lỗi: " + str);
+        window.location.href = "../login.html";
+      } else return r.json();
+    })
+    .then((d) => d);
+
+  let selectDM = danh_muc.find((dm) => dm.id == loai[0].id_danh_muc);
+  if (selectDM) {
+    ten_dm += `<option value="${selectDM.id}" id="danh_muc_${selectDM.id}">${selectDM.ten_danh_muc}</option>`;
+    danh_muc.forEach((dm) => {
+      if (dm.id !== selectDM.id) {
+        let { id, ten_danh_muc } = dm;
+        ten_dm += `<option value="${id}" id="danh_muc_${id}">${ten_danh_muc}</option>`;
+      }
+    });
+  }
+  let str = `
+      <div class="add_product">      
+            <form>                
+                <div class="group_input">
+                    <label for="topic-name">Danh mục</label>
+                    <select id="danh_muc_select">
+                            ${ten_dm}
+                        </select>
+                </div>
+                <div class="group_input">
+                    <label for="Ten_loai">Tên Loại</label>
+                    <input type="text" placeholder="Tên Loại" name="ten_loai" id="ten_loai" value="${loai[0].ten_loai}">
+                    <div class="error"></div>
+                </div>
+                <div class="group_btn">
+                  <button type="button" class="btn" id="btn_sua_loai">Cập nhật</button>
+                    <button type="reset" class="btn btntp">Nhập Lại</button>
+                </div>
+            </form>
+            </div>
+  `;
+  document.querySelector("#sua_loai").innerHTML = str;
+  document.querySelector("#btn_sua_loai").onclick = () => {
+    let id_danh_muc = document.getElementById("danh_muc_select").value;
+    let ten_loai = document.getElementById("ten_loai").value;
+
+    if (ten_loai == "") {
+      document.querySelector(".error").innerHTML =
+        "Vui lý điền đầy đủ thông tin";
+      return;
+    }
+
+    let data = {
+      id: Number(id),
+      id_danh_muc: Number(id_danh_muc),
+      ten_loai: ten_loai,
+    };
+    sualoai(id, data);
+    window.location.href = "ds_loai.html";
+  };
+</script>
